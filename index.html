@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Magic 8 Ball 🎱</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="grid-container">
+        <div>
+            <h1>Ask a question...</h1>
+        </div>
+        <div class="magic8ball">
+            <img id="magic8ball-image" src="images/Magic_eight_ball.png">
+            <div id="message" class="message">Your answer appears here</div>
+            <br>
+            <br>
+            <button>then click here</button>
+        </div>
+        <div>
+            <p>Created by Si Garry</p>
+        </div>
+    </div>  
+    
+    <!-- JavaScript to trigger the shake effect -->
+    <script>
+        const button = document.querySelector('button');
+        const magic8ball = document.getElementById('magic8ball-image');
+        const message = document.getElementById('message');
+    
+        // Possible answers for the Magic 8 Ball
+        const answers = [
+            "Yes",
+            "No",
+            "Ask again later",
+            "Definitely",
+            "Very doubtful",
+            "I don't fuckin think so mate"
+        ];
+    
+        button.addEventListener('click', function() {
+            // Adds the shake class to trigger the animation
+            magic8ball.classList.add('shake');
+            message.style.display = "none"; // Hide the message initially
+            
+            // Removes the shake class after the animation is done so it can be reapplied
+            setTimeout(function() {
+                magic8ball.classList.remove('shake');
+                
+                // Display the message with a random answer
+                const randomAnswer = answers[Math.floor(Math.random() * answers.length)];
+                message.textContent = randomAnswer;
+                message.style.display = "block"; 
+            }, 500); 
+        });
+    </script>
+    
+</body>
+</html>
